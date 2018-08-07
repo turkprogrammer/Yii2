@@ -9,6 +9,11 @@ $config = [
     'bootstrap' => ['log'],
     'layout' => 'tmpl', // загружаем свой шаблон 
     /*'defaultRoute' => 'site/contact',*/ //загружаем нужный контроллер
+     'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module', // подключаю модуль админки
+        ],
+    ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
