@@ -7,7 +7,11 @@ class PostController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        return $this->render('index');
+        $query = Post::find()->select('id, title, excerpt')->orderBy('id desc');
+        $pages = new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize'=> 2, 'pageSizeParam' => false, 'forcePageParam' => false]); //Пагинация, сичтаем общее колво записей и передаем в парамтр вывода лимит на страницу
+        $posts = $query->offset($pages->offset)->limit($pages->limit)->all();    
+         
+        return $this->render('index', compact('posts','pages'));
     }
     
     public function actionView()
