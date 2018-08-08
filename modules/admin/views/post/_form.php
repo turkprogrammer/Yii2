@@ -17,6 +17,21 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'excerpt')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+    
+    <?= \vova07\imperavi\Widget::widget([
+    'selector' => '#post-text',
+    'settings' => [
+        'lang' => 'ru',
+        'minHeight' => 100,
+        'maxHeight' => 300,
+        'plugins' => [
+            'clips',
+            'fullscreen',
+        ],
+    ],
+]);
+?>
+
 
     <?= $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
 
