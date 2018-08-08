@@ -8,7 +8,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'layout' => 'tmpl', // загружаем свой шаблон 
-    'defaultRoute' => 'post/index', //загружаем нужный контроллер 
+    'defaultRoute' => 'site/index', //загружаем нужный контроллер 
    
   
     'aliases' => [
@@ -18,7 +18,7 @@ $config = [
        'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module', // подключаю модуль админки
-            'defaultRoute' => '/post/index',
+            'defaultRoute' => 'default/index',
         ],
     ],
     'components' => [
@@ -62,10 +62,10 @@ $config = [
             'showScriptName' => false,
             
             'rules' => [
-              '<action>' => 'site/<action>',// убираем контроллер из строки
+            /*  '<action>' => 'site/<action>',// убираем контроллер из строки
                 'post/<id:\d+>' => 'post/view',// передаем параметр id поста в урл
                 'page/<page:\d+>' => 'site/index', //избавляемся от параметров гет в пагинации
-                '/' =>'site/index', //избавляемся от параметров гет в пагинации при обращении к корню
+                '/' =>'site/index',//избавляемся от параметров гет в пагинации при обращении к корню*/
             ],
         ],
         
