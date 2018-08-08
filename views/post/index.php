@@ -28,8 +28,13 @@ $this->title = 'My Yii Application';
 						 <div class="post-info">
                                                      <h4><a href="<?= \yii\helpers\Url::to(['post/view', 'id'=>$post->id])?>"><?=$post->title ?></a>  <span class="label label-default">July 30, 2014 / 27 Comments</span></h4>
 						 <p><?= $post->excerpt ?></p>
-						 
-						 <a href="site/about/"><span></span>READ MORE</a>
+						 <!--   yii2-social-share A beautiful social share buttons for yii2.-->
+<?= \imanilchaudhari\socialshare\ShareButton::widget([
+        'style'=>'horizontal',
+        'networks' => ['facebook','googleplus','linkedin','twitter'],
+        'data_via'=>'imanilchaudhari', //twitter username (for twitter only, if exists else leave empty)
+]); ?>
+						 <a href="<?= \yii\helpers\Url::to(['post/view', 'id'=>$post->id])?>"><span></span>READ MORE</a>
 						 </div>
 					 </div>
 					

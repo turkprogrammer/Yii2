@@ -8,7 +8,8 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'layout' => 'tmpl', // загружаем свой шаблон 
-    /*'defaultRoute' => 'site/contact',*/ //загружаем нужный контроллер
+    'defaultRoute' => 'post/index', //загружаем нужный контроллер 
+   
   
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -17,7 +18,7 @@ $config = [
        'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module', // подключаю модуль админки
-            /*'defaultRoute' => 'post/index',*/
+            'defaultRoute' => '/post/index',
         ],
     ],
     'components' => [
