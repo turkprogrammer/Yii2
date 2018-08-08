@@ -18,7 +18,7 @@ $config = [
        'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module', // подключаю модуль админки
-            'defaultRoute' => 'default/index',
+            'defaultRoute' => 'post/index',
         ],
     ],
     'components' => [
