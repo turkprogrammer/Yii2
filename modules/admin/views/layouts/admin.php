@@ -70,7 +70,7 @@ AppAsset::register($this);
                 <!-- /.dropdown -->
             </ul>
         </nav>
-        <!--/. NAV TOP -->
+        <!--/. NAV TOP 
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
@@ -139,7 +139,7 @@ AppAsset::register($this);
 
             </div>
 
-        </nav>  
+        </nav>   -->
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
 		  <div class="header"> 
