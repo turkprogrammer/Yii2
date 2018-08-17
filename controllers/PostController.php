@@ -3,7 +3,8 @@
 namespace app\controllers;
 use app\models\Post;
 
-class PostController extends \yii\web\Controller
+
+class PostController extends AppController
 {
     public function actionIndex()
     {
@@ -20,6 +21,7 @@ class PostController extends \yii\web\Controller
         $id = \Yii ::$app->request->get('id');
         $post = Post::findOne($id);    
         if (empty($post)) throw new \yii\web\HttpException(404, 'Mazafaka'); // если пост удален то выбрасываем исключение 404
+        $this->setMeta($post->title, $post->keywords, $post->description);
         return $this->render('view', compact('post'));
        
     }

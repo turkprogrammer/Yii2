@@ -1,8 +1,10 @@
 <?php
 /* @var $this yii\web\View */
+$this->title = $post->title;
+$this->params['breadcrumbs'][] = $post->title;
 ?>
 
-<h2><?php echo $post->title ;?></h2>
+<h2><?php echo $this->title ;?></h2>
 <p>
 <?php echo $post->text ;?>
 </p>
