@@ -113,11 +113,11 @@ AppAsset::register($this);
 	 <div class="container">
 		  <div class="col-md-8 single-main">				 
 			  <div class="single-grid">
-					  <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+                        <?= Breadcrumbs::widget([
+                            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                            ]) ?>
+                            <?= Alert::widget() ?>
+                        <?= $content ?>
 			  </div>
 			
 			
