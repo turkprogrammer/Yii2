@@ -1,8 +1,10 @@
 <?php
 
 /* @var $this yii\web\View */
+use yii\helpers\Html;
 
-$this->title = 'My Yii Application';
+$this->title = 'Blog';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">
 
