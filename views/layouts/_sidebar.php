@@ -24,3 +24,8 @@
 					 </ul>
 				 </div>
 				 <div class="clearfix"></div>
+                                 </br>
+                                <span class="label label-danger"><?= app\components\TestWidget::widget() ?></span>
+                            
+                                 
+                                 
