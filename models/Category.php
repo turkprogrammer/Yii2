@@ -1,4 +1,3 @@
-
 <?php
 
 /* 
@@ -7,4 +6,11 @@
  * and open the template in the editor.
  */
 
-echo __FILE__;
+namespace app\models;
+use yii\db\ActiveRecord;
+
+class Category extends ActiveRecord {
+    public static function tableName(){
+        return 'category';
+    }
+}

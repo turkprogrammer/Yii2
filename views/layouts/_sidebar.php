@@ -23,9 +23,13 @@
 					
 					 </ul>
 				 </div>
+                                 
 				 <div class="clearfix"></div>
-                                 </br>
+                                 
+                             <br/>
+                                <h3>Тестовый виджет</h3>
                                 <span class="label label-danger"><?= app\components\TestWidget::widget() ?></span>
-                            
+                                
+                             <div class="clearfix"></div>
                                  
                                  
