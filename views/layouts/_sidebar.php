@@ -4,6 +4,7 @@
 </div>
 <br/>
 <h3>Тестовый виджет</h3>
+<br/>
         <span class="label label-danger"><?= app\components\TestWidget::widget() ?></span>
 
 

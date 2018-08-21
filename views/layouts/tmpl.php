@@ -69,7 +69,7 @@ AppAsset::register($this);
         ],
     ]);
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-left'],
+        'options' => ['class' => 'navbar-nav navbar-left '],
         'items' => [
             ['label' => 'Home', 'url' => ['/']],
 			['label' => 'Hello', 'url' => ['/site/hello']],
