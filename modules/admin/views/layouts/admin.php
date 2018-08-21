@@ -70,7 +70,7 @@ AppAsset::register($this);
                 <!-- /.dropdown -->
             </ul>
         </nav>
-        <!--/. NAV TOP 
+        <!--/. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
@@ -79,21 +79,25 @@ AppAsset::register($this);
                         <a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="ui-elements.html"><i class="fa fa-desktop"></i> UI Elements</a>
+                        <a href="ui-elements.html"><i class="fa fa-desktop"></i> Страницы</a>
                     </li>
 					 
 					 <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> Charts<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-sitemap"></i>Блог<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="chart.html">Charts JS</a>
+                                <a href="chart.html">Посты JS</a>
                             </li>
                             <li>
-                                <a href="morris-chart.html">Morris Chart</a>
+                                <a href="morris-chart.html">Категории</a>
                             </li>
+                             <li>
+                                <a href="morris-chart.html">Комментарии</a>
+                            </li>
+				
 							</ul>
 						</li>	
-                    <li>
+                    <!--<li>
                         <a href="tab-panel.html"><i class="fa fa-qrcode"></i> Tabs & Panels</a>
                     </li>
                     
@@ -136,10 +140,10 @@ AppAsset::register($this);
                         <a class="active-menu" href="empty.html"><i class="fa fa-fw fa-file"></i> Empty Page</a>
                     </li>
                 </ul>
-
+-->
             </div>
 
-        </nav>   -->
+        </nav>  
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
 		  <div class="header"> 
