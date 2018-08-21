@@ -13,4 +13,8 @@ class Category extends ActiveRecord {
     public static function tableName(){
         return 'category';
     }
+    
+     public function getPost() {
+        return $this->hasMany(Post::className(), ['category_id' => 'id']); //возвращаем выбранный тип связи, савязываем таблицу по полям ['id'=>'category_id']
+    }
 }
