@@ -1,6 +1,7 @@
 <?php
 
 namespace app\controllers;
+
 //namespace app\models\Post;
 use Yii;
 use yii\filters\AccessControl;
@@ -11,13 +12,12 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Post;
 
-class SiteController extends Controller
-{
+class SiteController extends Controller {
+
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -42,8 +42,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function actions()
-    {
+    public function actions() {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -60,32 +59,26 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         //$posts = Post::find()->select('id, title, excerpt')->all();
         $query = Post::find()->select('id, title, excerpt, category_id')->orderBy('id desc'); //with() -жадная загрузка
-        $pages = new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize'=> 2, 'pageSizeParam' => false, 'forcePageParam' => false]); //Пагинация, сичтаем общее колво записей и передаем в парамтр вывода лимит на страницу
+        $pages = new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize' => 2, 'pageSizeParam' => false, 'forcePageParam' => false]); //Пагинация, сичтаем общее колво записей и передаем в парамтр вывода лимит на страницу
         $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
-        
-            if (file_exists('H:\OSPanel\domains\yii\db\home.db'))
-            { 
+
+        if (file_exists('H:\OSPanel\domains\yii\db\home.db')) {
             $text = file_get_contents("H:\OSPanel\domains\yii\db\home.db");
-           /* $data = str_replace("\n", "<br>", $text);*/
-            return $this->render('index', compact('text', 'posts','pages'));
-            
-        }
-        else echo 'No such file or directory';    
+            /* $data = str_replace("\n", "<br>", $text); */
+            return $this->render('index', compact('text', 'posts', 'pages'));
+        } else
+            echo 'No such file or directory';
     }
-    
-   
 
     /**
      * Login action.
      *
      * @return Response|string
      */
-    public function actionLogin()
-    {
+    public function actionLogin() {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -97,8 +90,12 @@ class SiteController extends Controller
 
         $model->password = '';
         return $this->render('login', [
-            'model' => $model,
+                    'model' => $model,
         ]);
+    }
+
+    public function actionSignup() {
+        return $this->render('signup');
     }
 
     /**
@@ -106,8 +103,7 @@ class SiteController extends Controller
      *
      * @return Response
      */
-    public function actionLogout()
-    {
+    public function actionLogout() {
         Yii::$app->user->logout();
 
         return $this->goHome();
@@ -118,8 +114,7 @@ class SiteController extends Controller
      *
      * @return Response|string
      */
-    public function actionContact()
-    {
+    public function actionContact() {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
@@ -127,7 +122,7 @@ class SiteController extends Controller
             return $this->refresh();
         }
         return $this->render('contact', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -136,34 +131,23 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionAbout()
-            
-    {
-        
-        if (file_exists('H:\OSPanel\domains\yii\db\about.db'))
-            { 
+    public function actionAbout() {
+
+        if (file_exists('H:\OSPanel\domains\yii\db\about.db')) {
             $text = file_get_contents("H:\OSPanel\domains\yii\db\about.db");
             $data = str_replace("\n", "<br>", $text);
             return $this->render('about', compact('data'));
-            
-        }
-        else echo 'No such file or directory';        
-            
-        
-        
+        } else
+            echo 'No such file or directory';
     }
-    
+
     public function actionHello() {
-       if (file_exists('H:\OSPanel\domains\yii\db\hello.db'))
-            { 
+        if (file_exists('H:\OSPanel\domains\yii\db\hello.db')) {
             $text = file_get_contents("H:\OSPanel\domains\yii\db\hello.db");
             $data = str_replace("\n", "<br>", $text);
             return $this->render('hello', compact('data'));
-            
-        }
-        else echo 'No such file or directory';        
-            
-        
-       
+        } else
+            echo 'No such file or directory';
     }
+
 }
