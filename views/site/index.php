@@ -35,7 +35,7 @@ $this->title = 'My Yii Application';
                                 <h4><a href="<?= \yii\helpers\Url::to(['post/view', 'id' => $post->id]) ?>"><?= $post->title ?></a>  <span class="label label-default">July 30, 2014 / 27 Comments</span></h4>
                                 <p><?= $post->excerpt ?></p>
                                 <!--   yii2-social-share A beautiful social share buttons for yii2.-->
-                                <?=
+                                <?//=
                                 \imanilchaudhari\socialshare\ShareButton::widget([
                                     'style' => 'horizontal',
                                     'networks' => ['facebook', 'googleplus', 'linkedin', 'twitter'],
@@ -43,7 +43,7 @@ $this->title = 'My Yii Application';
                                 ]);
                                 ?>
 
-                                <a href="<?= \yii\helpers\Url::to(['post/view', 'id' => $post->id]) ?>"><span></span>Читать</a>  
+                                <a href="<?= \yii\helpers\Url::to(['post/view', 'id' => $post->id]) ?>"><span></span>Читать полностью...</a> | Категория  
                                 <a class="btn btn-default"  role="button" href="<?= \yii\helpers\Url::to(['category/view', 'id' => $post->category->id]) ?>"><?= $post->category->name ?></a> 
                             </div>
                         </div>

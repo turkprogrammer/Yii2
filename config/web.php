@@ -63,8 +63,9 @@ $config = [
             'showScriptName' => false,
             
             'rules' => [
-            /*  '<action>' => 'site/<action>',// убираем контроллер из строки
-                'post/<id:\d+>' => 'post/view',// передаем параметр id поста в урл
+            '<action>' => 'site/<action>',// убираем контроллер Site из строки
+                
+                /*  'post/<id:\d+>' => 'post/view',// передаем параметр id поста в урл
                 'page/<page:\d+>' => 'site/index', //избавляемся от параметров гет в пагинации
                 '/' =>'site/index',//избавляемся от параметров гет в пагинации при обращении к корню*/
                 'category/<id:\d+>' => 'category/view',
