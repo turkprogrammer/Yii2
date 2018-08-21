@@ -27,7 +27,7 @@ class CategoryController extends AppController {
         }
        
         
-        $query = Post::find()->select('id, title, excerpt')->where(['category_id'=>$id])->orderBy('id desc');
+        $query = Post::find()->select('id, title, excerpt, category_id')->where(['category_id'=>$id])->orderBy('id desc');
         $pages = new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize' => 1, 'pageSizeParam' => false, 'forcePageParam' => false]); //Пагинация, сичтаем общее колво записей и передаем в парамтр вывода лимит на страницу
         $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
         $this->setMeta($category->name, $category->keywords, $category->description );
