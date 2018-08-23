@@ -7,19 +7,27 @@
  */
 
 namespace app\models;
+
 use yii\base\Model;
 
-
 class SignupForm extends Model {
-    
+
     public $username; //поля из Бд обьвялем т.к. не используем класс ActiveRecord
     public $password;
-    
-    /*Пишем правило валидации полей*/
+
+    /* Пишем правило валидации полей */
+
     public function rules() {
         return [
-          [['username', 'password'], 'required'], //массив правил валидации
+            [['username', 'password'], 'required'], //массив правил валидации
         ];
-        
     }
+
+    public function attributeLabels() {
+        return [
+            'username' => 'Логин',
+            'password' => 'Пароль',
+        ];
+    }
+
 }

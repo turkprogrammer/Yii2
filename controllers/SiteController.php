@@ -11,8 +11,9 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Post;
+use app\models\SignupForm; //импортируем модель регистрации
 
-class SiteController extends Controller {
+class SiteController extends AppController {
 
     /**
      * {@inheritdoc}
@@ -78,6 +79,15 @@ class SiteController extends Controller {
      *
      * @return Response|string
      */
+    public function actionSignup() {
+         if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        $this->setMeta('Регистрация'); // для setMeta расширяем AppController
+        $model = new SignupForm(); // создаем обьект модели app\models\SignupForm
+        return $this->render('signup', compact('model')); // передаем обьект модели
+    }
+
     public function actionLogin() {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
@@ -92,10 +102,6 @@ class SiteController extends Controller {
         return $this->render('login', [
                     'model' => $model,
         ]);
-    }
-
-    public function actionSignup() {
-        return $this->render('signup');
     }
 
     /**

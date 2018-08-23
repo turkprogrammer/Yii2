@@ -21,7 +21,7 @@ AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE HTML>
-<html>
+<html lang="<?php Yii::$app->language ?>">
 <head>
 	<?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
