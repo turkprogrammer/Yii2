@@ -7,7 +7,8 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'layout' => 'tmpl', // загружаем свой шаблон 
+    'layout' => 'tmpl', // загружаем свой шаблон
+    'language' => 'ru-RU', // явно указываем язык
     'defaultRoute' => 'site/index', //загружаем нужный контроллер 
    
   
