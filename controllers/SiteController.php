@@ -12,6 +12,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Post;
 use app\models\SignupForm; //импортируем модель регистрации
+use app\models\User;
 
 class SiteController extends AppController {
 
@@ -34,7 +35,7 @@ class SiteController extends AppController {
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['post','get'],
                 ],
             ],
         ];
@@ -80,11 +81,23 @@ class SiteController extends AppController {
      * @return Response|string
      */
     public function actionSignup() {
-         if (!Yii::$app->user->isGuest) {
+        if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
         $this->setMeta('Регистрация'); // для setMeta расширяем AppController
         $model = new SignupForm(); // создаем обьект модели app\models\SignupForm
+        //принимаем данные из формы регистрации и валидируем их
+        if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
+            // self::debug($model);
+            $user = new User(); // создаем обьект класса User
+            $user->username = $model->username;
+            $user->password = \Yii::$app->security->generatePasswordHash($model->password); //хешируем пароль
+
+            if ($user->save()) {
+                \Yii::$app->user->login($user); //если регистрация прошла то авторизуем пользователя
+                return $this->goHome(); // редирект на главную страницу
+            }
+        }
         return $this->render('signup', compact('model')); // передаем обьект модели
     }
 
