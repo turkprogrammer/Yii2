@@ -19,7 +19,8 @@ class SignupForm extends Model {
 
     public function rules() {
         return [
-            [['username', 'password'], 'required'], //массив правил валидации
+            [['username', 'password'], 'required', 'message' => 'Заполните поле'],
+            ['username', 'unique', 'targetClass' => User::className(), 'message' => 'этот логин уже занят'], //массив правил валидации
         ];
     }
 
