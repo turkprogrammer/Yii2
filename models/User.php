@@ -10,6 +10,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * {@inheritdoc}
+     *  метод получает пользователя по ID
      */
     public static function findIdentity($id)
     {
@@ -28,7 +29,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Finds user by username
      *
      * @param string $username
-     * @return static|null
+     * метод – findByUsername() – возвращает пользователя по его логину
      */
     public static function findByUsername($username)
     {
@@ -62,8 +63,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Validates password
      *
-     * @param string $password password to validate
-     * @return bool if password provided is valid for current user
+     * при валидации пароля мы должны его также шифровать, чтобы сравнить полученный хэш с тем, который записан в БД    
      */
     public function validatePassword($password)
     {
