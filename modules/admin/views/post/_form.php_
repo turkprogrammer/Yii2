@@ -12,14 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'category_id')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'excerpt')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
-	    <?= \vova07\imperavi\Widget::widget([
+    
+    <?= \vova07\imperavi\Widget::widget([
     'selector' => '#post-text',
     'settings' => [
         'lang' => 'ru',
@@ -32,6 +31,7 @@ use yii\widgets\ActiveForm;
     ],
 ]);
 ?>
+
 
     <?= $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
 
