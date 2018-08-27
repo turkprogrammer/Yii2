@@ -47,7 +47,7 @@ class Post extends \yii\db\ActiveRecord {
     public function attributeLabels() {
         return [
             'id' => 'ID',
-            'category_id' => 'Category ID',
+            'category_id' => 'Категория',
             'title' => 'Title',
             'excerpt' => 'Excerpt',
             'text' => 'Text',

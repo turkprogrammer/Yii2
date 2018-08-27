@@ -65,13 +65,14 @@ class PostController extends Controller
     public function actionCreate()
     {
         $model = new Post();
-
+$cats = \app\modules\admin\models\Category::find()->orderBy('name')->asArray()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'cats' =>$cats, // передаем в шаблон категории в виде массива
         ]);
     }
 
@@ -85,13 +86,15 @@ class PostController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $cats = \app\modules\admin\models\Category::find()->orderBy('name')->asArray()->all();
+        //print_r($cats);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'cats' =>$cats, // передаем в шаблон категории в виде массива
         ]);
     }
 

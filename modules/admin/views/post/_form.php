@@ -12,7 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'category_id')->textInput(['maxlength' => true]) ?>
+    <?//= $form->field($model, 'category_id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'category_id')->dropDownList(yii\helpers\ArrayHelper::map($cats, 'id', 'name'))?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
