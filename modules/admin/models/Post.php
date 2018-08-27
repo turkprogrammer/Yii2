@@ -15,21 +15,24 @@ use Yii;
  * @property string $keywords
  * @property string $description
  */
-class Post extends \yii\db\ActiveRecord
-{
+class Post extends \yii\db\ActiveRecord {
+
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'post';
+    }
+
+    public function getCategory() {
+
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['category_id', 'title', 'excerpt', 'text'], 'required'],
             [['category_id'], 'integer'],
@@ -41,8 +44,7 @@ class Post extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'category_id' => 'Category ID',
@@ -53,4 +55,5 @@ class Post extends \yii\db\ActiveRecord
             'description' => 'Description',
         ];
     }
+
 }

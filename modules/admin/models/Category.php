@@ -21,6 +21,13 @@ class Category extends \yii\db\ActiveRecord
     {
         return 'category';
     }
+    /*
+     * связываем модель категорий с моделью пост
+     */
+    public function getPost() {
+
+        return $this->hasMany(Post::className(), ['category_id' => 'id']);
+    }
 
     /**
      * {@inheritdoc}
