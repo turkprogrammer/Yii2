@@ -32,14 +32,15 @@ $this->title = 'My Yii Application';
                                 <!--<a href="/"><img src="images/post1.jpg" title="" /></a> -->
 
                             <div class="post-info">
-                                <h4><a href="<?= \yii\helpers\Url::to(['post/view', 'id' => $post->id]) ?>"><?= $post->title ?></a>  <span class="label label-default">July 30, 2014 / 27 Comments</span></h4>
+                                <h4><a href="<?= \yii\helpers\Url::to(['post/view', 'id' => $post->id]) ?>"><?= $post->title ?>
+                                    </a>  <span class="label label-default"><?=  $post->updated ?> / 27 Comments</span></h4>
                                 <p><?= $post->excerpt ?></p>
                                 <!--   yii2-social-share A beautiful social share buttons for yii2.-->
                                 <?//=
                                 \imanilchaudhari\socialshare\ShareButton::widget([
-                                    'style' => 'horizontal',
-                                    'networks' => ['facebook', 'googleplus', 'linkedin', 'twitter'],
-                                    'data_via' => 'imanilchaudhari', //twitter username (for twitter only, if exists else leave empty)
+                                'style' => 'horizontal',
+                                'networks' => ['facebook', 'googleplus', 'linkedin', 'twitter'],
+                                'data_via' => 'imanilchaudhari', //twitter username (for twitter only, if exists else leave empty)
                                 ]);
                                 ?>
 
@@ -52,8 +53,8 @@ $this->title = 'My Yii Application';
                     </div>
 
                 <?php endforeach; ?>
-    <?= yii\widgets\LinkPager::widget(['pagination' => $pages]); ?>
-<?php endif; ?>
+                <?= yii\widgets\LinkPager::widget(['pagination' => $pages]); ?>
+            <?php endif; ?>
 
 
 

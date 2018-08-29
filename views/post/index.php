@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <!--<a href="/"><img src="images/post1.jpg" title="" /></a> -->
 
                             <div class="post-info">
-                                <h4><a href="<?= \yii\helpers\Url::to(['post/view', 'id' => $post->id]) ?>"><?= $post->title ?></a>  <span class="label label-default">July 30, 2014 / 27 Comments</span></h4>
+                                <h4><a href="<?= \yii\helpers\Url::to(['post/view', 'id' => $post->id]) ?>"><?= $post->title ?></a>  <span class="label label-default"><?=  $post->updated ?>  / 27 Comments</span></h4>
                                 <p><?= $post->excerpt ?></p>
                                 <!--   yii2-social-share A beautiful social share buttons for yii2.-->
                                 <?//=

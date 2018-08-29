@@ -13,30 +13,35 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?//= $form->field($model, 'category_id')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'category_id')->dropDownList(yii\helpers\ArrayHelper::map($cats, 'id', 'name'))?>
+    <?= $form->field($model, 'category_id')->dropDownList(yii\helpers\ArrayHelper::map($cats, 'id', 'name')) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'excerpt')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
-	    <?= \vova07\imperavi\Widget::widget([
-    'selector' => '#post-text',
-    'settings' => [
-        'lang' => 'ru',
-        'minHeight' => 100,
-        'maxHeight' => 300,
-        'plugins' => [
-            'clips',
-            'fullscreen',
-        ],
-    ],
-]);
-?>
 
+    <?=
+    \vova07\imperavi\Widget::widget([
+        'selector' => '#post-text',
+        'settings' => [
+            'lang' => 'ru',
+            'minHeight' => 100,
+            'maxHeight' => 300,
+            'plugins' => [
+                'clips',
+                'fullscreen',
+            ],
+        ],
+    ]);
+    ?>
     <?= $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+
+    <?//= $form->field($model, 'created')->textInput() ?>
+
+    <?//= $form->field($model, 'updated')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

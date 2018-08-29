@@ -86,8 +86,7 @@ $cats = \app\modules\admin\models\Category::find()->orderBy('name')->asArray()->
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $cats = \app\modules\admin\models\Category::find()->orderBy('name')->asArray()->all();
-        //print_r($cats);
+$cats = \app\modules\admin\models\Category::find()->orderBy('name')->asArray()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

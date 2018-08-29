@@ -3,6 +3,9 @@
 namespace app\modules\admin\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "post".
@@ -14,6 +17,8 @@ use Yii;
  * @property string $text
  * @property string $keywords
  * @property string $description
+ * @property string $created
+ * @property string $updated
  */
 class Post extends \yii\db\ActiveRecord {
 
@@ -25,8 +30,28 @@ class Post extends \yii\db\ActiveRecord {
     }
 
     public function getCategory() {
-
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+
+    /*
+     * при обновлении изменилось только значение поля updated. 
+     * В качестве атрибутов  указали, что перед добавлением записи поведение сгенерирует 
+     * данные для полей created и updated, а перед событием UPDATE (обновлением) – обновим значение поля updated. 
+     * Также в качестве значения будет записан «человеческий» формат даты (по умолчанию это метка времени).
+     */
+
+    public function behaviors() {
+        return [
+            [
+                'class' => TimestampBehavior::className(), //поведение TimestampBehavior, благодаря которому для статей назначаются дата и время их создания или изменения без нашего участия, т.е. автоматически
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created', 'updated'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated'],
+                ],
+                // если вместо метки времени UNIX используется datetime:
+                'value' => new Expression('NOW()'),
+            ],
+        ];
     }
 
     /**
@@ -37,6 +62,7 @@ class Post extends \yii\db\ActiveRecord {
             [['category_id', 'title', 'excerpt', 'text'], 'required'],
             [['category_id'], 'integer'],
             [['text'], 'string'],
+            [['created', 'updated'], 'safe'],
             [['title', 'excerpt', 'keywords', 'description'], 'string', 'max' => 255],
         ];
     }
@@ -53,6 +79,8 @@ class Post extends \yii\db\ActiveRecord {
             'text' => 'Text',
             'keywords' => 'Keywords',
             'description' => 'Description',
+            'created' => 'Created',
+            'updated' => 'Обновлено',
         ];
     }
 
