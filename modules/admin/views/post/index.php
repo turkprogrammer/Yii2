@@ -37,7 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
             //'keywords',
             //'description',
             //'created',
-            'updated',
+            //'updated',
+                                [
+    'attribute' => 'updated',
+    'format' => ['date', 'dd/MM/yyyy']
+],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
