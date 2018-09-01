@@ -32,8 +32,9 @@
                     'options' => ['class' => 'sidebar-menu tree', 'data-widget' => 'tree'],
                     'items' => [
                         ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-                        ['label' => 'Категории', 'icon' => 'file-code-o', 'url' => ['category/index']],
-                        ['label' => 'Статьи', 'icon' => 'file-code-o', 'url' => ['post/index']],
+                        ['label' => 'Категории', 'icon' => 'fas fa-list', 'url' => ['category/index']],
+                        ['label' => 'Статьи', 'icon' => 'fas fa-file', 'url' => ['post/index']],
+                        ['label' => 'Пользователи', 'icon' => 'fas fa-users', 'url' => ['users/index']],
                       
                         ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                         [
