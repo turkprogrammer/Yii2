@@ -10,13 +10,11 @@ $config = [
     'layout' => 'tmpl', // загружаем свой шаблон
     'language' => 'ru-RU', // явно указываем язык
     'defaultRoute' => 'site/index', //загружаем нужный контроллер 
-   
-  
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
-       'modules' => [
+    'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module', // подключаю модуль админки
             'defaultRoute' => 'post/index',
@@ -29,7 +27,6 @@ $config = [
             'cookieValidationKey' => 'P-TpmXQHqBvxZbyV3OznYJ0Dt77MSiWl',
             //изавляемся от web
             'baseURl' => '',
-            
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -58,22 +55,18 @@ $config = [
             ],
         ],
         'db' => $db,
-        /* Включаем ЧПУ*/
+        /* Включаем ЧПУ */
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            
             'rules' => [
-           /* '<action>' =>'site/<action>',// убираем контроллер Site из строки*/
-                
                 /*  'post/<id:\d+>' => 'post/view',// передаем параметр id поста в урл
-                'page/<page:\d+>' => 'site/index', //избавляемся от параметров гет в пагинации
-                '/' =>'site/index',//избавляемся от параметров гет в пагинации при обращении к корню*/
+                  'page/<page:\d+>' => 'site/index', //избавляемся от параметров гет в пагинации
+                  '/' =>'site/index',//избавляемся от параметров гет в пагинации при обращении к корню */
                 'category/<id:\d+>' => 'category/view',
-                
+                '<action:(about|contact|hello|login|signup)>' => 'site/<action>', // убираем контроллер Site из строки регуляркой <a>
             ],
         ],
-        
     ],
     'params' => $params,
 ];
@@ -83,8 +76,8 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+            // uncomment the following to add your IP if you are not connecting from localhost.
+            //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 
     $config['bootstrap'][] = 'gii';
@@ -92,7 +85,7 @@ if (YII_ENV_DEV) {
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
-          'generators' => [ //here
+        'generators' => [//here
             'crud' => [
                 'class' => 'yii\gii\generators\crud\Generator',
                 'templates' => [
