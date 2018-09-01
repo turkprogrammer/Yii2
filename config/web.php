@@ -64,6 +64,7 @@ $config = [
                   'page/<page:\d+>' => 'site/index', //избавляемся от параметров гет в пагинации
                   '/' =>'site/index',//избавляемся от параметров гет в пагинации при обращении к корню */
                 'category/<id:\d+>' => 'category/view',
+                'post/<id:\d+>' => 'post/view',// передаем параметр id поста в урл
                 '<action:(about|contact|hello|login|signup)>' => 'site/<action>', // убираем контроллер Site из строки регуляркой <a>
             ],
         ],

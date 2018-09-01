@@ -20,7 +20,8 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "imanilchaudhari/yii2-social-share": "dev-master",
         "vova07/yii2-imperavi-widget": "*",
-        "dmstr/yii2-adminlte-asset": "2.*"
+        "dmstr/yii2-adminlte-asset": "2.*",
+        "zelenin/yii2-rss": "~0.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
