@@ -172,7 +172,7 @@ class SiteController extends AppController {
 
         $search = \Yii::$app->request->get('search'); //получаем переменную search из формы поиска
         $search1 = str_replace(' ', '', $search); //удаляем пробелы
-        $query = Post::find()->where(['like', 'replace(text, " ", "")', $search1]);
+        $query = Post::find()->where(['like', 'replace(title, " ", "")', $search1]);
         $this->setMeta('Поиск', 'Blog', 'TurkProgrammer');
         $dataProvider = new \yii\data\ActiveDataProvider([
             'query' => $query,
