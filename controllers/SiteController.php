@@ -35,7 +35,7 @@ class SiteController extends AppController {
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post','get'],
+                    'logout' => ['post', 'get'],
                 ],
             ],
         ];
@@ -129,7 +129,7 @@ class SiteController extends AppController {
     }
 
     /**
-     * Displays contact page.
+     * Displays contact pages.
      *
      * @return Response|string
      */
@@ -145,11 +145,6 @@ class SiteController extends AppController {
         ]);
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
     public function actionAbout() {
 
         if (file_exists('H:\OSPanel\domains\yii\db\about.db')) {
@@ -167,6 +162,24 @@ class SiteController extends AppController {
             return $this->render('hello', compact('data'));
         } else
             echo 'No such file or directory';
+    }
+
+    /*
+     * Поиск по сайту
+     */
+
+    public function actionSearch() {
+
+        $search = \Yii::$app->request->get('search'); //получаем переменную search из формы поиска
+        $search1 = str_replace(' ', '', $search); //удаляем пробелы
+        $query = Post::find()->where(['like', 'replace(text, " ", "")', $search1]);
+        $this->setMeta('Поиск', 'Blog', 'TurkProgrammer');
+        $dataProvider = new \yii\data\ActiveDataProvider([
+            'query' => $query,
+            'pagination' => ['pagesize' => 2],
+        ]);
+
+        return $this->render('search', compact('dataProvider', 'search1'));
     }
 
 }

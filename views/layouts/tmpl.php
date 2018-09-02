@@ -16,6 +16,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -43,8 +44,8 @@ AppAsset::register($this);
 			 <!---start-top-nav---->
 			 <div class="top-menu">
 				 <div class="search">
-					 <form>
-					 <input type="text" placeholder="" required="">
+                                     <form method="get" action="<?= Url::to(['/site/search/']) ?>">
+					 <input type="text" name="search" placeholder="Что будем искать..." required="">
 					 <input type="submit" value=""/>
 					 </form>
 				 </div>
