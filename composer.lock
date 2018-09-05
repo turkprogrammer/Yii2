@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b27e31cb08fbe2eca528014a82001377",
+    "content-hash": "3a20acaf06194a09ec5b456a17ae623d",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -114,6 +114,29 @@
             ]
         },
         {
+            "name": "bower-asset/jquery-slugify",
+            "version": "1.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/madflow/jquery-slugify.git",
+                "reference": "30f6bb0c4ad1181fe81dd2c1447d1e0403f52d8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/madflow/jquery-slugify/zipball/30f6bb0c4ad1181fe81dd2c1447d1e0403f52d8d",
+                "reference": "30f6bb0c4ad1181fe81dd2c1447d1e0403f52d8d",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.7",
+                "bower-asset/speakingurl": "~9.0.0"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
             "name": "bower-asset/punycode",
             "version": "v1.3.2",
             "source": {
@@ -125,6 +148,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/bestiejs/punycode.js/zipball/38c8d3131a82567bfef18da09f7f4db68c84f8a3",
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3",
+                "shasum": null
+            },
+            "type": "bower-asset"
+        },
+        {
+            "name": "bower-asset/speakingurl",
+            "version": "v9.0.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:pid/speakingurl.git",
+                "reference": "013eb82b59b1e5942ca3ccdfaeec2bffca81f7b8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pid/speakingurl/zipball/013eb82b59b1e5942ca3ccdfaeec2bffca81f7b8",
+                "reference": "013eb82b59b1e5942ca3ccdfaeec2bffca81f7b8",
                 "shasum": null
             },
             "type": "bower-asset"
@@ -571,6 +610,47 @@
                 "yii2"
             ],
             "time": "2018-04-08T05:43:27+00:00"
+        },
+        {
+            "name": "powerkernel/yii2-slugify",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/powerkernel/yii2-slugify.git",
+                "reference": "80ed152d9695ec753a808761af25869d5ed5a5d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/powerkernel/yii2-slugify/zipball/80ed152d9695ec753a808761af25869d5ed5a5d2",
+                "reference": "80ed152d9695ec753a808761af25869d5ed5a5d2",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery-slugify": "~1.2.5",
+                "yiisoft/yii2": "~2.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "powerkernel\\slugify\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Harry Tang",
+                    "email": "harry@powerkernel.com"
+                }
+            ],
+            "description": "Slugify extension for Yii2",
+            "keywords": [
+                "slugify",
+                "yii2"
+            ],
+            "time": "2017-12-14T05:30:14+00:00"
         },
         {
             "name": "rmrevin/yii2-fontawesome",

@@ -17,17 +17,16 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Post', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
-            
-             [
-                'attribute' =>'category_id',
+            [
+                'attribute' => 'category_id',
                 'value' => function ($data) {
-                   return $data->category->name;
+                    return $data->category->name;
                 }
             ],
             //'category_id',
@@ -38,12 +37,19 @@ $this->params['breadcrumbs'][] = $this->title;
             //'description',
             //'created',
             //'updated',
-                                [
-    'attribute' => 'updated',
-    'format' => ['date', 'dd/MM/yyyy']
-],
-
+            [
+                'format' => 'html',
+                'label' => 'Image',
+                'value' => function($data) {
+                    return Html::img($data->getImage(), ['width' => 150]);
+                }
+            ],
+            [
+                'attribute' => 'updated',
+                'format' => ['date', 'dd/MM/yyyy']
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);
+    ?>
 </div>

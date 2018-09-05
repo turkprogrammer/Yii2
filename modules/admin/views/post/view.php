@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('SetImage', ['set-image', 'id' => $model->id], ['class' => 'btn btn-default']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -41,6 +42,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'keywords',
             'description',
             'created',
+             [
+                'format' => 'html',
+                'label' => 'Изображение',               
+                'value' => function($data) {
+                    return Html::img($data->getImage(), ['width' => 150]);
+                }
+            ],
             //'updated',
             [
     'attribute' => 'updated',

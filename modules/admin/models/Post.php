@@ -6,6 +6,7 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use app\models\ImageUpload;
 
 /**
  * This is the model class for table "post".
@@ -82,6 +83,32 @@ class Post extends \yii\db\ActiveRecord {
             'created' => 'Создано',
             'updated' => 'Обновлено',
         ];
+    }
+
+    public function saveImage($filename) {
+
+        $this->image = $filename;
+
+        return $this->save(false);
+    }
+
+    public function deleteImage() {
+
+        $imageUploadModel = new ImageUpload();
+        $imageUploadModel->deleteCurrentImage($this->image);
+    }
+
+    public function getImage() {
+
+        if ($this->image) {
+            return '/uploads/post/' . $this->image;
+        }
+        return '/no-img.png';
+    }
+
+    public function beforeDelete() {
+        $this->deleteImage();
+        return parent::beforeDelete();
     }
 
 }

@@ -21,7 +21,8 @@
         "imanilchaudhari/yii2-social-share": "dev-master",
         "vova07/yii2-imperavi-widget": "*",
         "dmstr/yii2-adminlte-asset": "2.*",
-        "zelenin/yii2-rss": "~0.1"
+        "zelenin/yii2-rss": "~0.1",
+        "powerkernel/yii2-slugify": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

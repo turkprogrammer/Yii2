@@ -8,17 +8,17 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\ImageUpload;
 
 /**
  * PostController implements the CRUD actions for Post model.
  */
-class PostController extends Controller
-{
+class PostController extends Controller {
+
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -33,14 +33,13 @@ class PostController extends Controller
      * Lists all Post models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $dataProvider = new ActiveDataProvider([
             'query' => Post::find(),
         ]);
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+                    'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -50,10 +49,9 @@ class PostController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+                    'model' => $this->findModel($id),
         ]);
     }
 
@@ -62,17 +60,16 @@ class PostController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new Post();
-$cats = \app\modules\admin\models\Category::find()->orderBy('name')->asArray()->all();
+        $cats = \app\modules\admin\models\Category::find()->orderBy('name')->asArray()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
-            'model' => $model,
-            'cats' =>$cats, // передаем в шаблон категории в виде массива
+                    'model' => $model,
+                    'cats' => $cats, // передаем в шаблон категории в виде массива
         ]);
     }
 
@@ -83,17 +80,16 @@ $cats = \app\modules\admin\models\Category::find()->orderBy('name')->asArray()->
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->findModel($id);
-$cats = \app\modules\admin\models\Category::find()->orderBy('name')->asArray()->all();
+        $cats = \app\modules\admin\models\Category::find()->orderBy('name')->asArray()->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
-            'model' => $model,
-            'cats' =>$cats, // передаем в шаблон категории в виде массива
+                    'model' => $model,
+                    'cats' => $cats, // передаем в шаблон категории в виде массива
         ]);
     }
 
@@ -104,8 +100,7 @@ $cats = \app\modules\admin\models\Category::find()->orderBy('name')->asArray()->
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -118,12 +113,28 @@ $cats = \app\modules\admin\models\Category::find()->orderBy('name')->asArray()->
      * @return Post the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = Post::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionSetImage($id) {
+
+        $model = new ImageUpload;
+        if (Yii::$app->request->isPost) {
+            $post = $this->findModel($id); // вытаскиваем пост
+            // var_dump($post->title); die();//проверяем выводит ли пост
+            $file = \yii\web\UploadedFile::getInstance($model, 'image');
+            //var_dump(strtolower(md5(uniqid($file->baseName))).'.'.$file->extension ); 
+            //$model->uploadFile($file); //вызываем из модели метод агрузки файла на сервер
+            if ($post->saveImage($model->uploadFile($file, $post->image))) { //если запись картинки успешно то возвращаем на текущий вид
+                return $this->redirect(['view', 'id' => $post->id]);
+            }
+        }
+        return $this->render('image', ['model' => $model]);
+    }
+
 }

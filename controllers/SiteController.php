@@ -176,7 +176,7 @@ class SiteController extends AppController {
         $this->setMeta('Поиск', 'Blog', 'TurkProgrammer');
         $dataProvider = new \yii\data\ActiveDataProvider([
             'query' => $query,
-            'pagination' => ['pagesize' => 2],
+            'pagination' => ['pagesize' => 3],
         ]);
 
         return $this->render('search', compact('dataProvider', 'search1'));

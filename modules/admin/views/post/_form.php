@@ -42,6 +42,10 @@ use yii\widgets\ActiveForm;
     <?//= $form->field($model, 'created')->textInput() ?>
 
     <?//= $form->field($model, 'updated')->textInput() ?>
+    
+    <?//= $form->field($model, 'slug')->widget(\powerkernel\slugify\Slugify::className(),['source'=>'#blog-title'])//yii2-slugify?>
+    <?//= $form->field($model, 'title')->textInput(['maxlength' => true])//yii2-slugify ?>
+    
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
