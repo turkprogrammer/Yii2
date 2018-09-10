@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'updated',
             [
                 'format' => 'html',
-                'label' => 'Image',
+                'label' => 'Изображение',
                 'value' => function($data) {
                     return Html::img($data->getImage(), ['width' => 150]);
                 }

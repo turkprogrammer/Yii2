@@ -63,7 +63,7 @@ class SiteController extends AppController {
      */
     public function actionIndex() {
         //$posts = Post::find()->select('id, title, excerpt')->all();
-        $query = Post::find()->select('id, title, excerpt, category_id, created, updated')->orderBy('id desc'); //with() -жадная загрузка
+        $query = Post::find()->select('id, title, excerpt, category_id, created, updated,image')->orderBy('id desc'); //with() -жадная загрузка
         $pages = new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize' => 2, 'pageSizeParam' => false, 'forcePageParam' => false]); //Пагинация, сичтаем общее колво записей и передаем в парамтр вывода лимит на страницу
         $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
 

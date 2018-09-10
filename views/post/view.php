@@ -6,7 +6,7 @@ $this->params['breadcrumbs'][] = $post->title;
 
 <h2><?php echo $this->title; ?></h2>
 <p>
-    <?php echo $post->text; ?>
+    <img   src="/uploads/post/<?= $post->image ?>" alt="<?= $post->title ?>" class="img-rounded"><?php echo $post->text; ?>
 </p>
 </br>
 <span class="label label-info"><?= $post->updated ?></span>
