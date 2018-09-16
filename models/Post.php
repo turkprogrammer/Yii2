@@ -21,5 +21,10 @@ class Post extends ActiveRecord {
     public function getCategory() {
         return $this->hasOne(Category::className(), ['id' => 'category_id']); //возвращаем выбранный тип связи, савязываем таблицу по полям ['id'=>'category_id']
     }
-
+    /**
+     * создаем связь с моделью комментов
+     */
+    public function getComments() {
+        return $this->hasMany(Comment::className, ['post_id'=>'id']);
+    }
 }
