@@ -32,9 +32,18 @@ $this->params['breadcrumbs'][] = $post->title;
 
 <div class="comments">
     <h3 class="title-comments">Комментарии</h3>
+
+    <?php if (Yii::$app->user->isGuest) : ?>        
+
+        
+    <div class="alert alert-danger" role="alert">
+ Чтобы добавить комментарий  <a href="#login" class="alert-link">Вход</a> /  <a href="#signup" class="alert-link">Регистрация</a>
+</div>
+
+    <?php endif; ?>
     <ul class="media-list">
         <!-- Комментарий (уровень 1) -->
-<?php foreach ($tree as $comm) : ?>
+        <?php foreach ($tree as $comm) : ?>
             <li class="media">
                 <div class="media-left">
 
@@ -53,8 +62,8 @@ $this->params['breadcrumbs'][] = $post->title;
                     </div>
 
                     <!-- Вложенный медиа-компонент (уровень 2) -->
-    <?php if (isset($comm['childs'])) : ?>
-        <?php foreach ($comm['childs'] as $child) : ?>
+                    <?php if (isset($comm['childs'])) : ?>
+                        <?php foreach ($comm['childs'] as $child) : ?>
                             <div class="media">
                                 <div class="media-left">
                                     <span class="media-object img-rounded"> <i class="fa fa-comments-o" aria-hidden="true"></i> </span>
@@ -76,17 +85,17 @@ $this->params['breadcrumbs'][] = $post->title;
 
                                 </div>
                             </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                     <!-- Конец вложенного комментария (уровень 2) -->
 
                 </div>
             </li>
             <!-- Конец комментария (уровень 1) -->
-<?php endforeach; ?>
+        <?php endforeach; ?>
     </ul>
-      <?php if(!Yii::$app->user->isGuest) : ?>
- <?php $form = ActiveForm::begin() ?>
+    <?php if (!Yii::$app->user->isGuest) : ?>
+        <?php $form = ActiveForm::begin() ?>
 
         <?= $form->field($comments, 'parent_id')->hiddenInput(['value' => 0])->label(false) ?>
 
@@ -98,9 +107,9 @@ $this->params['breadcrumbs'][] = $post->title;
 
 
         <?php ActiveForm::end() ?>
-    
-   
-       
-                      
-        <?php endif; ?>
+
+
+
+
+    <?php endif; ?>
 </div>

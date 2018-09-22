@@ -14,9 +14,9 @@
         <?php if(!Yii::$app->user->isGuest) : ?>
         <a href="<?= yii\helpers\Url::to('/site/logout')?>"><?= Yii::$app->user->identity['username'] ?> (Выход)</a>
                <?php else : ?>
-              <a href="<?php echo yii\helpers\Url::to('/site/login')?>">Вход </a>
+              <a id="login" href="<?php echo yii\helpers\Url::to('/site/login')?>">Вход </a>
               <br/>
-              <a href="<?php echo yii\helpers\Url::to('/site/signup')?>">Регистрация</a>
+              <a id="signup" href="<?php echo yii\helpers\Url::to('/site/signup')?>">Регистрация</a>
                       
         <?php endif; ?>
 
