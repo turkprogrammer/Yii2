@@ -34,6 +34,7 @@
                         ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                         ['label' => 'Категории', 'icon' => 'fas fa-list', 'url' => ['category/index']],
                         ['label' => 'Статьи', 'icon' => 'fas fa-file', 'url' => ['post/index']],
+                        ['label' => 'Комментарии', 'icon' => 'fas fa-file', 'url' => ['comments/index']],
                         ['label' => 'Пользователи', 'icon' => 'fas fa-users', 'url' => ['users/index']],
                       
                         ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],

@@ -1,10 +1,12 @@
 <?php
 
 namespace app\controllers;
+
 use Yii;
 use app\models\Post;
 use app\models\Comments;
 use app\models\User;
+use yii\web\NotFoundHttpException;
 
 class PostController extends AppController {
 
@@ -39,15 +41,24 @@ class PostController extends AppController {
             $user = User::findOne(Yii::$app->user->id);
             $comments->post_id = $post->id;
             $comments->username = $user->username;
-            $comments->parent_id = (int)$comments->parent_id;           
+            $comments->parent_id = (int) $comments->parent_id;
             //self::debug($tree); exit();
-            $comments->save();         
+            $comments->save();
+
+            /* $comm = Comments::find()->where(['parent_id' => $comments->parent_id]);
+
+              if (!$comm)
+              {
+              throw new NotFoundHttpException('Такого комментария нет.');
+              }
+              else
+              {
+              $comments->save();
+              } */
             return $this->redirect(['view', 'id' => $post->id]);
-            
         } else {
             return $this->render('view', compact('post', 'tree', 'comments'));
         }
-     
     }
 
 }
