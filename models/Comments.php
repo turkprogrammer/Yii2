@@ -46,7 +46,7 @@ class Comments extends \yii\db\ActiveRecord
             'parent_id' => 'Parent ID',
             'post_id' => 'Post ID',
             'username' => 'Username',
-            'text' => 'Text',
+            'text' => 'Оставить комментарий',
         ];
     }
 }

@@ -39,16 +39,15 @@ class PostController extends AppController {
             $user = User::findOne(Yii::$app->user->id);
             $comments->post_id = $post->id;
             $comments->username = $user->username;
-           //self::debug($tree); exit();
+            $comments->parent_id = (int)$comments->parent_id;
+            //self::debug($tree); exit();
             $comments->save();         
             return $this->redirect(['view', 'id' => $post->id]);
             
         } else {
             return $this->render('view', compact('post', 'tree', 'comments'));
         }
-        //self::debug($tree); exit();
-        //$this->setMeta($post->title, $post->keywords, $post->description);
-        //return $this->render('view', compact('post','tree','comments'));
+     
     }
 
 }

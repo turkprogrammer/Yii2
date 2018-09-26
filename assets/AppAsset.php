@@ -22,6 +22,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/style.css','http://fonts.googleapis.com/css?family=Oswald:100,400,300,700',
         'http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic',
+        'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300i',
     ];
     public $js = ['js/move-top.js', 'js/easing.js','js/main.js',
     ];

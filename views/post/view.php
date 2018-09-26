@@ -35,10 +35,10 @@ $this->params['breadcrumbs'][] = $post->title;
 
     <?php if (Yii::$app->user->isGuest) : ?>        
 
-        
-    <div class="alert alert-danger" role="alert">
- Чтобы добавить комментарий  <a href="#login" class="alert-link">Вход</a> /  <a href="#signup" class="alert-link">Регистрация</a>
-</div>
+
+        <div class="alert alert-danger" role="alert">
+            Чтобы добавить комментарий  <a href="#login" class="alert-link">Вход</a> /  <a href="#signup" class="alert-link">Регистрация</a>
+        </div>
 
     <?php endif; ?>
     <ul class="media-list">
@@ -52,12 +52,12 @@ $this->params['breadcrumbs'][] = $post->title;
                 </div>
                 <div class="media-body">
                     <div class="media-heading">
-                        <div class="author"><?= $comm['username'] ?></div>
+                        <div class="author"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> <span class="label label-default"><?= $comm['username'] ?></span></div>
                     </div>
-                    <div class="media-text text-justify"><?= $comm['text'] ?></div>
+                    <div class="media-text text-justify"><blockquote style="font-family: 'Open Sans Condensed', sans-serif;"><?= $comm['text'] ?></blockquote></div>
                     <div class="footer-comment">
                         <span class="comment-reply">
-                            <a href="#comment-text" class="reply" data-comment="<?= $comm['id'] ?>">ответить</a>
+                            <i class="glyphicon glyphicon-comment" aria-hidden="true"></i> <a href="#comments-text" class="reply" data-comment="<?= $comm['id'] ?>">ответить</a>
                         </span>
                     </div>
 
@@ -70,9 +70,11 @@ $this->params['breadcrumbs'][] = $post->title;
                                 </div>
                                 <div class="media-body">
                                     <div class="media-heading">
-                                        <div class="author"><?= $child['username'] ?></div>
+                                        <div class="author"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> <span class="label label-default"><?= $child['username'] ?></span></div>
                                     </div>
-                                    <div class="media-text text-justify"><?= $child['text'] ?></div>
+                                    <div class="media-text text-justify" ><blockquote class="blockquote" style="font-size: 12pt; font-family: 'Open Sans Condensed', sans-serif;"> <?= $child['text'] ?></blockquote></div>
+
+
                                     <!--<div class="footer-comment">
 
                                         </span>
@@ -102,7 +104,7 @@ $this->params['breadcrumbs'][] = $post->title;
         <?= $form->field($comments, 'text')->textarea(['rows' => 6]) ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Коментировать', ['class' => 'btn btn-default']) ?>
+            <?= Html::submitButton('Коментировать', ['class' => 'btn btn-primary']) ?>
         </div>
 
 
