@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $post->title;
                 </div>
                 <div class="media-body">
                     <div class="media-heading">
-                        <div class="author"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> <span class="label label-default"><?= $comm['username'] ?></span></div>
+                        <div class="author"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> <span class="label label-default"><?= $comm['username'] ?></span>  <span class="label label-default"><?= $comm['date'] ?></span> <i class="glyphicon glyphicon-time" aria-hidden="true"></i></div>
                     </div>
                     <div class="media-text text-justify"><blockquote style="font-family: 'Open Sans Condensed', sans-serif;"><?= $comm['text'] ?></blockquote></div>
                     <div class="footer-comment">
@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $post->title;
                                 </div>
                                 <div class="media-body">
                                     <div class="media-heading">
-                                        <div class="author"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> <span class="label label-default"><?= $child['username'] ?></span></div>
+                                        <div class="author"><i class="glyphicon glyphicon-user" aria-hidden="true"></i> <span class="label label-default"><?= $child['username'] ?></span> <span class="label label-default"><?= $comm['date'] ?></span> <i class="glyphicon glyphicon-time" aria-hidden="true"></i></div>
                                     </div>
                                     <div class="media-text text-justify" ><blockquote class="blockquote" style="font-size: 12pt; font-family: 'Open Sans Condensed', sans-serif;"> <?= $child['text'] ?></blockquote></div>
 

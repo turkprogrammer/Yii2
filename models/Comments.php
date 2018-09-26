@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-
+use yii\db\Expression;
 /**
  * This is the model class for table "comments".
  *
@@ -18,6 +18,19 @@ class Comments extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public function behaviors() {
+        return [
+            [
+                'class' => \yii\behaviors\TimestampBehavior::className(), //поведение TimestampBehavior, благодаря которому для статей назначаются дата и время их создания или изменения без нашего участия, т.е. автоматически
+                'attributes' => [
+                    \yii\db\ActiveRecord::EVENT_BEFORE_INSERT => ['date'],
+                    /*ActiveRecord::EVENT_BEFORE_UPDATE => ['updated'],*/
+                ],
+                // если вместо метки времени UNIX используется datetime:
+                'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
     public static function tableName()
     {
         return 'comments';
@@ -32,6 +45,7 @@ class Comments extends \yii\db\ActiveRecord
             [['parent_id', 'post_id', 'username', 'text'], 'required'],
             [['parent_id', 'post_id'], 'integer'],
             [['text'], 'string'],
+            [['date'], 'safe'],
             [['username'], 'string', 'max' => 255],
         ];
     }

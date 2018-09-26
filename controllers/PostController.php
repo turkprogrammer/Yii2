@@ -39,7 +39,7 @@ class PostController extends AppController {
             $user = User::findOne(Yii::$app->user->id);
             $comments->post_id = $post->id;
             $comments->username = $user->username;
-            $comments->parent_id = (int)$comments->parent_id;
+            $comments->parent_id = (int)$comments->parent_id;           
             //self::debug($tree); exit();
             $comments->save();         
             return $this->redirect(['view', 'id' => $post->id]);
