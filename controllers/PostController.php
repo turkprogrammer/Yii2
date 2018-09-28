@@ -13,9 +13,9 @@ class PostController extends AppController {
     public function actionIndex() {
         $query = Post::find()->select('id, title, excerpt, category_id, created, updated, image')->orderBy('id desc');
         $pages = new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize' => 2, 'pageSizeParam' => false, 'forcePageParam' => false]); //Пагинация, сичтаем общее колво записей и передаем в парамтр вывода лимит на страницу
-        $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
-
-        return $this->render('index', compact('posts', 'pages'));
+        $posts = $query->offset($pages->offset)->limit($pages->limit)->all();       
+       
+        return $this->render('index', compact('posts', 'pages','countComments'));
     }
 
     public function actionView() {
