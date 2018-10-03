@@ -50,7 +50,8 @@ class SiteController extends AppController {
                 'class' => 'yii\web\ErrorAction',
             ],
             'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
+                //'class' => 'yii\captcha\CaptchaAction',
+                'class' => 'app\common\NumericCaptcha',//подключение цифровой кастомной капчи
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
