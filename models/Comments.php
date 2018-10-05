@@ -46,6 +46,7 @@ class Comments extends \yii\db\ActiveRecord
             [['parent_id', 'post_id'], 'integer'],
             [['text'], 'string'],
             [['date'], 'safe'],
+           
             [['username'], 'string', 'max' => 255],
         ];
     }

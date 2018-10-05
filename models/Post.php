@@ -11,8 +11,6 @@ namespace app\models;
 use yii\db\ActiveRecord;
 
 class Post extends ActiveRecord {
-    
-   
 
     public static function tablename() {
         return 'post';
@@ -21,5 +19,11 @@ class Post extends ActiveRecord {
     public function getCategory() {
         return $this->hasOne(Category::className(), ['id' => 'category_id']); //возвращаем выбранный тип связи, савязываем таблицу по полям ['id'=>'category_id']
     }
+
+    /*
+     * Pager
+     */
+
+
 
 }

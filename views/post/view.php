@@ -5,13 +5,17 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
+
 $this->title = $post->title;
 $this->params['breadcrumbs'][] = $post->title;
 ?>
 
 <h2><?php echo $this->title; ?></h2>
 <p>
-    <img   src="/uploads/post/<?= $post->image ?>" alt="<?= $post->title ?>" class="img-rounded"><?php echo $post->text; ?>
+          
+        <?= Html::img('@web/uploads/post/'.$post->image, ['alt' => $post->title,'class'=>'img-rounded']) ?>
+        
+        <?php echo $post->text; ?>
 </p>
 </br>
 <span class="label label-info"><?= $post->updated ?></span>
@@ -28,6 +32,7 @@ $this->params['breadcrumbs'][] = $post->title;
 ?>
 </br>
 </br>
+
 <!--Коментарии-->
 
 <div class="comments">

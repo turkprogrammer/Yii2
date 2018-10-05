@@ -21,11 +21,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="content-grid">					 
                         <div class="content-grid-info">
                                 <!--<a href="/"><img src="images/post1.jpg" title="" /></a> -->
+                            <?= Html::img('@web/uploads/post/'.$post->image, ['alt' => $post->title,'class'=>'img-rounded']) ?>
                             <?php $countComments = Comments::find()->where(['post_id' => $post->id])->count(); ?>
                             <div class="post-info">
                                 <h4><a href="<?= \yii\helpers\Url::to(['post/view', 'id' => $post->id]) ?>"><?= $post->title ?></a>
                                     <span class="label label-default"><?= $post->updated ?> </span>
-                                   <span class="label label-danger"> <?=$countComments ?></span>  <span class="glyphicon glyphicon-comment"></span> </h4>
+                                    <span class="label label-danger"> <?= $countComments ?></span>  <span class="glyphicon glyphicon-comment"></span> </h4>
                                 <p><?= $post->excerpt ?></p>
                                 <!--   yii2-social-share A beautiful social share buttons for yii2.-->
                                 <?//=

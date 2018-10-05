@@ -3,6 +3,7 @@
 
 use yii\helpers\Html;
 use app\models\Comments;
+
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
@@ -23,7 +24,7 @@ $this->title = 'My Yii Application';
 
 
 
-            <?php //echo $text ;  ?>
+<?php //echo $text ;   ?>
             <br/>
 
             <?php if (!empty($posts)) : ?>
@@ -35,10 +36,10 @@ $this->title = 'My Yii Application';
 
                             <div class="post-info">
                                 <div class="row">
-                                    <div class="col-md-4"><img  src="/uploads/post/<?= $post->image ?>" alt="<?= $post->title ?>" class="img-rounded"></div>
+                                    <div class="col-md-4"><?= Html::img('@web/uploads/post/' . $post->image, ['alt' => $post->title, 'class' => 'img-rounded']) ?></div>
                                     <div class="col-md-8">   <h4><a href="<?= \yii\helpers\Url::to(['post/view', 'id' => $post->id]) ?>"><?= $post->title ?>
-                                                 <?php $countComments = Comments::find()->where(['post_id' => $post->id])->count(); ?>
-                                            </a>  <span class="label label-default"><?= $post->updated ?></span> <span class="label label-danger"> <?=$countComments ?></span>  <span class="glyphicon glyphicon-comment"></span> </h4>
+        <?php $countComments = Comments::find()->where(['post_id' => $post->id])->count(); ?>
+                                            </a>  <span class="label label-default"><?= $post->updated ?></span> <span class="label label-danger"> <?= $countComments ?></span>  <span class="glyphicon glyphicon-comment"></span> </h4>
                                         <p><?= $post->excerpt ?></p>
 
                                         <!--   yii2-social-share A beautiful social share buttons for yii2.-->
@@ -62,7 +63,7 @@ $this->title = 'My Yii Application';
 
 
                 <?php endforeach; ?>
-    <?= yii\widgets\LinkPager::widget(['pagination' => $pages]); ?>
+                <?= yii\widgets\LinkPager::widget(['pagination' => $pages]); ?>
 <?php endif; ?>
 
 

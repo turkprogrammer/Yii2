@@ -38,6 +38,18 @@ class SiteController extends AppController {
                     'logout' => ['post', 'get'],
                 ],
             ],
+            [
+                'class' => 'yii\filters\PageCache',
+                'only' => ['index'],
+                'duration' => 60,
+                'variations' => [
+                    \Yii::$app->language,
+                ],
+                'dependency' => [
+                    'class' => 'yii\caching\DbDependency',
+                    'sql' => 'SELECT COUNT(*) FROM post',
+                ],
+            ],
         ];
     }
 
@@ -51,7 +63,7 @@ class SiteController extends AppController {
             ],
             'captcha' => [
                 //'class' => 'yii\captcha\CaptchaAction',
-                'class' => 'app\common\NumericCaptcha',//подключение цифровой кастомной капчи
+                'class' => 'app\common\NumericCaptcha', //подключение цифровой кастомной капчи
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];

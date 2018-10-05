@@ -10,12 +10,29 @@ use yii\web\NotFoundHttpException;
 
 class PostController extends AppController {
 
+    public function behaviors() {
+        return [
+            [
+                'class' => 'yii\filters\PageCache',
+                'only' => ['index'],
+                'duration' => 60,
+                'variations' => [
+                    \Yii::$app->language,
+                ],
+                'dependency' => [
+                    'class' => 'yii\caching\DbDependency',
+                    'sql' => 'SELECT COUNT(*) FROM post',
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex() {
         $query = Post::find()->select('id, title, excerpt, category_id, created, updated, image')->orderBy('id desc');
         $pages = new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize' => 2, 'pageSizeParam' => false, 'forcePageParam' => false]); //Пагинация, сичтаем общее колво записей и передаем в парамтр вывода лимит на страницу
-        $posts = $query->offset($pages->offset)->limit($pages->limit)->all();       
-       
-        return $this->render('index', compact('posts', 'pages','countComments'));
+        $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
+
+        return $this->render('index', compact('posts', 'pages', 'countComments'));
     }
 
     public function actionView() {
