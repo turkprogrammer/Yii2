@@ -80,8 +80,9 @@ class SiteController extends AppController {
         $pages = new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize' => 2, 'pageSizeParam' => false, 'forcePageParam' => false]); //Пагинация, сичтаем общее колво записей и передаем в парамтр вывода лимит на страницу
         $posts = $query->offset($pages->offset)->limit($pages->limit)->all();
 
-        if (file_exists('H:\OSPanel\domains\yii\db\home.db')) {
-            $text = file_get_contents("H:\OSPanel\domains\yii\db\home.db");
+        if (file_exists($_SERVER['DOCUMENT_ROOT'].'\db\home.db')) {
+            $text = file_get_contents($_SERVER['DOCUMENT_ROOT']."\db\home.db");
+         
             /* $data = str_replace("\n", "<br>", $text); */
             return $this->render('index', compact('text', 'posts', 'pages'));
         } else
@@ -160,8 +161,8 @@ class SiteController extends AppController {
 
     public function actionAbout() {
 
-        if (file_exists('H:\OSPanel\domains\yii\db\about.db')) {
-            $text = file_get_contents("H:\OSPanel\domains\yii\db\about.db");
+        if (file_exists($_SERVER['DOCUMENT_ROOT'].'\db\about.db')) {
+            $text = file_get_contents($_SERVER['DOCUMENT_ROOT']."\db\about.db");
             $data = str_replace("\n", "<br>", $text);
             return $this->render('about', compact('data'));
         } else
@@ -169,8 +170,8 @@ class SiteController extends AppController {
     }
 
     public function actionHello() {
-        if (file_exists('H:\OSPanel\domains\yii\db\hello.db')) {
-            $text = file_get_contents("H:\OSPanel\domains\yii\db\hello.db");
+        if (file_exists($_SERVER['DOCUMENT_ROOT'].'\db\hello.db')) {
+            $text = file_get_contents($_SERVER['DOCUMENT_ROOT']."\db\hello.db");
             $data = str_replace("\n", "<br>", $text);
             return $this->render('hello', compact('data'));
         } else
