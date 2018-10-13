@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $post->title;
 <h2><?php echo $this->title; ?></h2>
 <p>
           
-        <?= Html::img('@web/uploads/post/'.$post->image, ['alt' => $post->title,'class'=>'img-rounded']) ?>
+        <?= Html::img('@web/uploads/post/'.$post->image, ['alt' => $post->title,'class'=>'thumbnail']) ?>
         
         <?php echo $post->text; ?>
 </p>

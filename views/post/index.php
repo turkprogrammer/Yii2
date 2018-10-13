@@ -6,6 +6,7 @@ use app\models\Comments;
 $this->title = 'Blog';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="site-index">
 
 
@@ -21,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="content-grid">					 
                         <div class="content-grid-info">
                                 <!--<a href="/"><img src="images/post1.jpg" title="" /></a> -->
-                            <?= Html::img('@web/uploads/post/'.$post->image, ['alt' => $post->title,'class'=>'img-rounded']) ?>
+                            <?= Html::img('@web/uploads/post/'.$post->image, ['alt' => $post->title,'class'=>'thumbnail']) ?>
                             <?php $countComments = Comments::find()->where(['post_id' => $post->id])->count(); ?>
                             <div class="post-info">
                                 <h4><a href="<?= \yii\helpers\Url::to(['post/view', 'id' => $post->id]) ?>"><?= $post->title ?></a>
