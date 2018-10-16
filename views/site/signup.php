@@ -9,7 +9,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 ?>
 
-
+<div class="jumbotron">
  <?php $form = ActiveForm::begin() ?>
 
 <?= $form->field($model, 'username')?>
@@ -21,3 +21,4 @@ use yii\bootstrap\ActiveForm;
         </div>
 
   <?php ActiveForm::end(); ?>
+  </div>

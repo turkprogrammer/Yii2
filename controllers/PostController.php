@@ -8,6 +8,7 @@ use app\models\Comments;
 use app\models\User;
 use yii\web\NotFoundHttpException;
 
+
 class PostController extends AppController {
 
     public function behaviors() {
@@ -72,6 +73,7 @@ class PostController extends AppController {
               {
               $comments->save();
               } */
+           
             return $this->redirect(['view', 'id' => $post->id]);
         } else {
             return $this->render('view', compact('post', 'tree', 'comments'));

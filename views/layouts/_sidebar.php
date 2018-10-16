@@ -22,9 +22,9 @@
         <?php if (!Yii::$app->user->isGuest) : ?>
             <a href="<?= yii\helpers\Url::to('/site/logout') ?>"><?= Yii::$app->user->identity['username'] ?> (Выход) <i class="glyphicon glyphicon-log-out" aria-hidden="true"></i></a>
         <?php else : ?>
-            <a id="login" href="<?php echo yii\helpers\Url::to('/site/login') ?>">Вход <i class="glyphicon glyphicon-log-in" aria-hidden="true"></i></a>
+            <a id="login" href="<?php echo yii\helpers\Url::to('/login') ?>">Вход <i class="glyphicon glyphicon-log-in" aria-hidden="true"></i></a>
             <br/>
-            <a id="signup" href="<?php echo yii\helpers\Url::to('/site/signup') ?>">Регистрация <i class="glyphicon glyphicon-cog" aria-hidden="true"></i></a>
+            <a id="signup" href="<?php echo yii\helpers\Url::to('/signup') ?>">Регистрация <i class="glyphicon glyphicon-cog" aria-hidden="true"></i></a>
             <?php endif; ?>
     </div>
 </div>
