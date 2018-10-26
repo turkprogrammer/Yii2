@@ -7,9 +7,12 @@
  */
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+$this->title = 'Register';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="jumbotron">
+
  <?php $form = ActiveForm::begin() ?>
 
 <?= $form->field($model, 'username')?>

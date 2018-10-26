@@ -7,4 +7,4 @@
  * and open the template in the editor.
  */
 
-echo __FILE__;
+echo "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.";
