@@ -13,7 +13,11 @@
 <h3>Последние записи</h3>
 <br/>
 <?= app\components\ListWidget::widget() ?>
-
+<hr/>
+<br/>
+<h3>Комментарии</h3>
+<br/>
+<div class="jumbotron1"><?= app\components\CommentsWidget::widget() ?></div>
 <hr/>
 <br/>
 
@@ -32,7 +36,7 @@
     </div>
 </div>
 
-<div class="jumbotron1"><?//= app\components\CommentsWidget::widget() ?></div>
+
 
 <?php //var_dump(Yii::$app->user->identity) ;?>
 
