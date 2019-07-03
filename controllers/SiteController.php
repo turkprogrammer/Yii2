@@ -14,6 +14,12 @@ use app\models\Post;
 use app\models\SignupForm; //импортируем модель регистрации
 use app\models\User;
 use yii\helpers\Url;
+use yii\helpers\StringHelper;
+use yii\data\ActiveDataProvider;
+
+use Zelenin\yii\extensions\Rss;
+
+
 
 class SiteController extends AppController {
 
@@ -195,6 +201,69 @@ class SiteController extends AppController {
         ]);
 
         return $this->render('search', compact('dataProvider', 'search1'));
+    }
+
+    /**
+     * Rss feed
+     */
+    public function actionRss() {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Post::find()->select('id, title, excerpt'),
+            
+            'pagination' => [
+                'pageSize' => 10
+            ],
+        ]);
+//self::debug(Post::find()->select('id, title, excerpt')->all());
+        $response = Yii::$app->getResponse();
+        $headers = $response->getHeaders();
+       
+        $headers->set('Content-Type', 'application/rss+xml; charset=utf-8');
+
+        echo \Zelenin\yii\extensions\Rss\RssView::widget([
+            'dataProvider' => $dataProvider,
+            'channel' => [
+                'title' => function ($widget, \Zelenin\Feed $feed) {
+                    $feed->addChannelTitle(Yii::$app->name);
+                },
+                'link' => Url::toRoute('/', true),
+                'description' => 'Posts ',
+                'language' => function ($widget, \Zelenin\Feed $feed) {
+                    return Yii::$app->language;
+                },
+                'image' => function ($widget, \Zelenin\Feed $feed) {
+                    $feed->addChannelImage('http://example.com/channel.jpg', 'http://example.com', 88, 31, 'Image description');
+                },
+            ],
+            'items' => [
+                'title' => function ($model, $widget, \Zelenin\Feed $feed) {
+                    return $model->title;
+                },
+                'description' => function ($model, $widget, \Zelenin\Feed $feed) {
+                    return StringHelper::truncateWords($model->excerpt, 50);
+                },
+                'link' => function ($model, $widget, \Zelenin\Feed $feed) {
+                    return Url::toRoute(['post/view', 'id' => $model->id], true);
+                },
+              /*  'author' => function ($model, $widget, \Zelenin\Feed $feed) {
+                    return $model->user->email . ' (' . $model->user->username . ')';
+                },
+               * */
+            
+               /* 'guid' => function ($model, $widget, \Zelenin\Feed $feed) {
+                    $date = \DateTime::createFromFormat('Y-m-d H:i:s', $model->updated);
+                    return Url::toRoute(['post/view', 'id' => $model->id], true) . ' ' . $date->format(DATE_RSS);
+                },*/
+                'pubDate' => function ($model, $widget, \Zelenin\Feed $feed) {
+                  $date = \DateTime::createFromFormat('Y-m-d H:i:s', $model->updated); //$date = DateTime::createFromFormat($format, $Stroke, new DateTimeZone('Europe/Moscow'));
+                                 
+                  return Yii::$app->formatter->asDate('now', 'php:Y-m-d');
+                  //return $date->format('full');
+                  //self::debug($date);
+
+                }
+            ]
+        ]);
     }
 
 }

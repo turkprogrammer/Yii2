@@ -28,6 +28,12 @@ $config = [
             //изавляемся от web
             'baseURl' => '',
         ],
+          'formatter' => [
+            'dateFormat' => 'dd.MM.yyyy',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'EUR',
+       ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -66,7 +72,7 @@ $config = [
                 'category/<id:\d+>' => 'category/view',
                 'page/<id:\d+>' => 'page/view',
                 'post/<id:\d+>' => 'post/view',// передаем параметр id поста в урл
-                '<action:(about|contact|hello|login|signup)>' => 'site/<action>', // убираем контроллер Site из строки регуляркой <a>
+                '<action:(about|contact|hello|login|signup|rss)>' => 'site/<action>', // убираем контроллер Site из строки регуляркой <a>
             ],
         ],
     ],
